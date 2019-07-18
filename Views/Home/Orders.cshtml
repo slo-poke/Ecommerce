@@ -1,0 +1,49 @@
+﻿@using ECommerce.Models
+@model Order
+
+<partial name="NavPartial" />
+
+<h4 style="text-decoration: underline; font-weight: bold;">Add a New Order</h4>
+<form asp-action="AddOrder" method="post">
+    <span asp-validation-for="Quantity" style="color: red;"></span>
+    <label asp-for="CustomerId">Customer</label>
+    <select asp-for="CustomerId">
+        @{ 
+            foreach(Customer cust in ViewBag.AllCustomers)
+            {
+                <option value="@cust.CustomerId">@cust.Name</option>
+            }
+        }
+    </select><br />
+    <label>Order</label>
+    <input type="number" asp-for="Quantity" />
+    <select asp-for="ProductId">
+        @{ 
+            foreach(Product prod in ViewBag.AllProducts)
+            {
+                <option value="@prod.ProductId">@prod.Name</option>
+            }
+        }
+    </select>
+    <input type="submit" value="Order" />
+</form>
+
+<table>
+    <tr>
+        <th>Customer Name</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Date</th>
+    </tr>
+    @{ 
+        foreach(Order order in ViewBag.AllOrders)
+        {
+            <tr>
+                <td>@order.Customer.Name</td>
+                <td>@order.Product.Name</td>
+                <td>@order.Quantity</td>
+                <td>@String.Format("{0: MMMM d yyyy}", order.CreatedAt)</td>
+            </tr>
+        }
+    }
+</table>

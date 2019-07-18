@@ -1,0 +1,130 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    /*padding-top: 50px;*/
+    /*padding-bottom: 20px;*/
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+.sidebar {
+    display: inline-block;
+    width: 23%;
+}
+
+.main_content {
+    display: inline-block;
+    width: 73%;
+    vertical-align: top;
+}
+
+.products_preview {
+    height: 30%;
+}
+
+.recent_orders {
+    height: 30%;
+}
+
+.new_customers {
+    height: 30%;
+}
+
+.product {
+    display: inline-block;
+    width: 17%;
+    margin: 1%;
+    text-align: center;
+}
+
+.product_img {
+    max-width: 150px;
+    max-height: 200px;
+}
+
+.product p {
+    margin: 0px;
+    text-align: center;
+}
+
+table {
+    margin-top: 25px;
+    border: 1px solid black;
+}
+
+th, td {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding: 5px 15px 5px 5px;
+}
+
+th {
+    background-color: darkgray;
+}
+
+tr:nth-child(odd) {
+    background-color: lightgray;
+}
+
+.search {
+    margin-top: 25px;
+}
+
+#banner {
+    width: 136%;
+    text-align: center !important;
+    margin-left: -200px;
+    margin-right: unset;
+}
+
+.footer {
+    color: lightgray;
+}
+
+i {
+    padding-right: 25px;
+}
+
+.footer ul li {
+    line-height: 35px;
+}
+
+.ShopCat {
+    width: 136%;
+    margin-left:-200px;
+    margin-right: unset;
+}
+
+.ShopCat h1 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

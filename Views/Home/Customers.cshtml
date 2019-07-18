@@ -1,0 +1,50 @@
+﻿@using ECommerce.Models
+@model Customer
+
+<partial name="NavPartial" />
+
+<h4 style="text-decoration: underline; font-weight: bold;">Add a New Customer</h4>
+<form asp-action="AddCustomer" method="post">
+    <span asp-validation-for="Name" style="color: red;"></span>
+    <label asp-for="Name">Customer Name: </label>
+    <input type="text" asp-for="Name" />
+    <input type="submit" value="Create" />
+</form>
+
+<form action="/search/customers" method="post" class="search">
+    <span name="SearchError" style="color: red">@ViewBag.ErrorMessage</span>
+    <input type="text" name="Search" placeholder="Search..." />
+    <input type="submit" value="Search" />
+</form>
+
+<table>
+    <tr>
+        <th>Customer Name</th>
+        <th>Created At</th>
+        <th>Actions</th>
+    </tr>
+    @{ 
+        if (ViewBag.SearchCustomers == null)
+        {
+            foreach (Customer cust in ViewBag.AllCustomers)
+            {
+                <tr>
+                    <td>@cust.Name</td>
+                    <td>@String.Format("{0: MMMM d, yyyy}", cust.CreatedAt)</td>
+                    <td><a href="/remove/@cust.CustomerId"><button>Remove</button></a></td>
+                </tr>
+            }
+        } else
+        {
+            foreach(Customer sCust in ViewBag.SearchCustomers)
+            {
+                <tr>
+                    <td>@sCust.Name</td>
+                    <td>@String.Format("{0: MMMM d, yyyy}", sCust.CreatedAt)</td>
+                    <td><a href="/remove/@sCust.CustomerId"><button>Remove</button></a></td>
+                </tr>
+            }
+        }
+    }
+</table>
+

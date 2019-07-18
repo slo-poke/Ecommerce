@@ -1,0 +1,59 @@
+﻿@using ECommerce.Models
+@model Product
+
+<partial name="NavPartial" />
+
+<div class="sidebar">
+    <form action="/search/products" method="post">
+        <span name="SearchError" style="color: red;">@ViewBag.ErrorMessage</span>
+        <input type="text" name="Search" placeholder="Search..." /><br /><br />
+        <input type="submit" value="Search" />
+    </form>
+    <br /><br /><br />
+    <h4 style="text-decoration: underline; font-weight: bold;">Add a New Product</h4>
+    <form asp-action="AddProduct" method="post">
+        <label asp-for="Name">Name:</label><br />
+        <span asp-validation-for="Name"></span>
+        <input type="text" asp-for="Name" placeholder="Name..."/><br /><br />
+
+        <label asp-for="ImageUrl">Image (url):</label><br />
+        <span asp-validation-for="ImageUrl"></span>
+        <input type="url" asp-for="ImageUrl" placeholder="http://" /><br /><br />
+
+        <label asp-for="Description">Description:</label><br />
+        <span asp-validation-for="Description"></span>
+        <textarea asp-for="Description"></textarea><br /><br />
+
+        <label asp-for="Quantity">Initial Quantity:</label><br />
+        <span asp-validation-for="Quantity"></span>
+        <input type="number" asp-for="Quantity" /><br /><br />
+
+        <input type="submit" value="Create" />
+    </form>
+</div>
+
+<div class="main_content">
+    @{ 
+        if (ViewBag.SearchProducts == null)
+        {
+            foreach (Product prod in ViewBag.AllProducts)
+            {
+                <div class="product">
+                    <img class="product_img" src="@prod.ImageUrl" alt="@prod.Name  image" />
+                    <p>@prod.Name</p>
+                    <p>(@prod.Quantity left)</p>
+                </div>
+            }
+        } else
+        {
+            foreach(Product sProd in ViewBag.SearchProducts)
+            {
+                <div class="product">
+                    <img class="product_img" src="@sProd.ImageUrl" alt="@sProd.Name image" /> 
+                    <p>@sProd.Name</p>
+                    <p>(@sProd.Quantity left)</p>
+                </div>
+            }
+        }
+    }
+</div>

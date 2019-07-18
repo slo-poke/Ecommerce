@@ -1,0 +1,15 @@
+﻿@using ECommerce.Models
+@model List<Product>
+
+    <div class="card-deck">
+    @foreach (Product prod in Model)
+    {
+        <div class="card bg-light text-center" style="margin-bottom: 10px; margin-top: 10px;">
+            <img src="@prod.ImageUrl" class="card-img-top" alt="@prod.Description" />
+            <div class="card-content" style="padding-left: 5px; padding-right: 5px;">
+                <a href="/showProduct/@prod.ProductId"><h4>@prod.Name</h4></a>
+                <div class="card-footer bg-transparent"><small class="text-muted">$@prod.Price</small></div>
+            </div>
+        </div>
+    }
+    </div>

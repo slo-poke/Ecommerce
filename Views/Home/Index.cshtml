@@ -1,0 +1,45 @@
+﻿<partial name="NavPartial" />
+
+<div class="sidebar">
+    <form action="/search" method="post">
+        <input type="text" name="Search" placeholder="Search..." /><br />
+        <input type="submit" value="Search" />
+    </form>
+</div>
+
+<div class="main_content">
+    <div class="products_preview">
+        @{
+            foreach (Product prod in ViewBag.Products)
+            {
+                <div class="product">
+                    <img class="product_img" src="@prod.ImageUrl" alt="@prod.Name  Image" />
+                    <p>@prod.Name</p>
+                    <p>(@prod.Quantity left)</p>
+                </div>
+            }
+        }
+    </div>
+    <div class="recent_orders">
+        <h3 style="text-decoration: underline;">Recent Orders</h3>
+        <ul>
+        @{ 
+            foreach(Order order in ViewBag.Orders)
+            {
+                <li>@order.Customer.Name purchased @order.Quantity @order.Product.Name  (@String.Format("{0: MMMM d yyyy}", order.CreatedAt))</li>
+            }
+        }
+        </ul>
+    </div>
+    <div class="new_customers">
+        <h3 style="text-decoration: underline;">New Customers</h3>
+        <ul>
+            @{ 
+                foreach(Customer cust in ViewBag.Customers)
+                {
+                    <li>@cust.Name joined the store (@String.Format("{0: MMMM d yyyy}", cust.CreatedAt))</li>
+                }
+            }
+        </ul>
+    </div>
+</div>
